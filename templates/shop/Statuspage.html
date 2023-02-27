@@ -1,0 +1,44 @@
+{% extends 'shop/main.html' %}
+{% load static %}
+{% block content%}
+
+
+
+<section>
+    <div class="p-2 mb-1 bg-dark ">
+        <h1 class="text-center text-white ">Statuse of Products</h1>
+    </div>
+    <div>
+        <br><br><br>
+    <h3 class="text-center">Thank you For Purchesing</h3>
+    </div>
+    <br>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Purches Date</th>
+            <th scope="col">Price</th>
+            <th scope="col">Payment</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for i in status %}
+          <tr>
+            <th scope="row">{{i.id}}</th>
+            <td>{{i.product.name}}</td>
+            <td>{{i.transaction_id}}</td>
+            <td> ${{i.product.price}}</td>
+            <td>Done</td>
+            <td>{{i.status}}</td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'shop/main.html' %}
+
+{% block content %}
+
+<!-- <form action="" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit" class="btn btn-info" >Login</button> 
+ </form> -->
+
+<section>
+    <div class="container">
+        <br>
+        <div><h1 class="text-center bg-success text-white" > Registation Here </h1></div>
+        <br>
+        <form action="" method="POST">  
+            {% csrf_token %}        
+            <div class="container">
+                <label ><b>Name : </b></label>
+              <input type="text" placeholder="Enter Name" autocomplete="off"  id="name" name="name" required>
+                <br><br>
+
+              <label ><b>Username :</b></label>
+              <input type="text" placeholder="Enter Username" autocomplete="off" id="username" name="username" required>
+                <br><br>
+
+                <label ><b>City :</b></label>
+                <input type="text" placeholder="Enter City Name" autocomplete="off" id="city" name="city" required>
+                  <br><br>
+
+                <label ><b>email :</b></label>
+                  <input type="text" placeholder="Enter email id" autocomplete="off" id="email" name="email" required>
+                    <br><br>
+              <label ><b>Password :</b></label>
+              <input type="password" placeholder="Enter Password" id="password1" name="password1" required>
+              <br><br></b>
+              <label ><b>Repassword :</b></label>
+              <input type="password" placeholder="Enter Password" id="password2" name="password2"required>
+            </div>         
+            <div class="container">
+                <br>
+            <button type="submit" class="btn btn-info" >Login</button> 
+            <a href="{% url 'Homepage'%}"><button type="button" class="btn btn-danger">Cancel</button></a>
+            <br><br>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+          </form>
+    </div>
+</section> 
+
+{% endblock content %}

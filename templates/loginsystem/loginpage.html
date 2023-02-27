@@ -1,0 +1,30 @@
+{% extends 'shop/main.html' %}
+
+{% block content %}
+
+<section>
+    <div class="container">
+        <br>
+        <div><h1 class="text-center bg-success text-white" > Login Here </h1></div>
+        <br>
+        <form method="POST">  
+            {% csrf_token %}       
+            <div class="container">
+              <label for="uname"><b>Username</b></label>
+              <input type="text" placeholder="Enter Username" autocomplete="off" name="username" required>
+                <br><br>
+              <label for="psw"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="password" required>
+            </div>         
+            <div class="container">
+                <br>
+            <button type="submit" class="btn btn-info" >Login</button> 
+            <a href="{% url 'Homepage'%}"><button type="button" class="btn btn-danger">Cancel</button></a>
+            <br><br>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+          </form>
+    </div>
+</section>
+
+{% endblock content %}

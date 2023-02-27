@@ -1,0 +1,49 @@
+{% extends 'shop/main.html' %}
+
+{% block content%}
+
+<a  class="btn btn-outline-dark" href="{% url 'Homepage'%}">&#x2190; Back</a>
+<div class="container mt-5 mb-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="images p-3">
+                            <div class="text-center p-4"><img id="main-image" src="{{product.image.url }}" width="150"> </div>
+                            <div class="thumbnail text-center"> <img onclick="change_image(this)" src="{{product.samples_image1.url}}" width="70"> <img onclick="change_image(this)" src="{{product.samples_image2.url}}" width="70"> </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="product p-4">
+                            <div class="mt-4 mb-3"> <h1> Details</h1><hr>
+                                <h2 class="text-uppercase">{{product.name}}</h2>
+                                <input type="hidden" name ="item_id" value=" {{product.id}}">
+                                <h4 class="text-uppercase">${{product.price}}</h4>
+                                <input type="hidden" name="item-price" value="{{product.price}}">
+                                
+                            </div>
+                            <h5 class="about">{{product.description}}</h5>
+                            <hr>
+                            <h6 class="about"> saller : {{product.seller_name}}</h6>
+                            <h6 class="about"> saller : {{product.offers}}</h6>
+                            <h6 class="about"> Date : {{product.date_added}}</h6>
+                            <hr>
+                        
+                            <div class="cart mt-2 align-items-center"> 
+                                <a href="{% url 'Checkout'%}"><button class="btn btn-danger text-uppercase mr-2 px-4">Buy Now</button></a>
+                                <a href=""><button class="btn btn-warning text-uppercase mr-2 px-4" type="submit">Add to Cart</button></a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

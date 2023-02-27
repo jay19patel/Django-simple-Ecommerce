@@ -1,0 +1,59 @@
+{% extends 'shop/main.html' %}
+{% load static %}
+{% block content%}
+
+
+<div class="p-2 mb-1 bg-dark ">
+    <h1 class="text-center text-white ">My Shop </h1>
+</div>
+<br>
+
+
+
+<div class="row">
+	<div class="col-lg-2">
+		<h5 class="text-center">Category</h5>
+		<hr>
+		<a href="/"><h6 class="text-center">All Products</h6></a><hr>
+		{% for cat in catagory %}
+		<a href="/?id={{cat.id}}"><h6 class="text-center">{{cat.id }}:{{cat.name}}</h6></a><hr>
+		{%endfor%}
+
+	</div>
+
+	<div class="col-lg-10">		
+			<div class="row">
+				{% for pro in products %}
+				<div class="col-lg-4">
+					<img class="thumbnail" src="{{pro.image.url}}">
+					<div class="box-element product">
+						<h3><strong>{{pro.name}}</strong></h3>
+						<h5><strong>Price : ${{pro.price}}</strong></h5>
+						<hr>
+						<form action="{% url 'Homepage'%}" method="POST">
+							{% csrf_token %}
+							<input type="hidden" name="itemid" value="{{pro.id}}">
+							<button  id="{{pro.id}}" type="submit" class="btn btn-outline-secondary update-btn">Add to Cart</button>
+
+						</form>
+						<a class="btn btn-outline-success" href="{% url 'Productdetails' pro.id %}">View</a>
+
+					</div>
+				</div>			
+				{%endfor%}				
+			</div> 
+		
+	</div>
+
+
+	
+	
+</div> 
+ 
+
+
+ 
+
+
+
+{% endblock %}

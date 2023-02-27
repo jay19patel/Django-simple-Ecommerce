@@ -1,0 +1,46 @@
+
+{% for message in messages %}
+<div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">Notification!!</h4>
+    <p>{{ message }}</p>
+    <hr>
+</div>
+
+{% endfor %}
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'Homepage'%}"><h4>HOME</h4></a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'Statuspage'%}">STATUS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'Statuspage'%}"> Hellow : ) {{user}}</a>
+          </li>
+          {%endif%}
+        </ul>
+
+        {% if user.is_authenticated %}
+        <div class="d-flex align-items-center">
+          <a href="{% url 'Logout'%}"><button type="button" class="btn btn-warning px-3 me-2">
+            Log Out</button></a>
+          <a class="btn btn-dark px-3" href="{% url 'Cartpage'%}"role="button"><i class="fa-solid fa-cart-shopping"></i></a>
+          </div>
+        
+          {%else%}
+        <div class="d-flex align-items-center">
+          <a href="{% url 'Loginpage'%}"><button type="button" class="btn btn-warning px-3 me-2">
+            Login</button></a>
+          <a href="{% url 'Registrationpage'%}"> <button type="button" class="btn btn-primary me-3">
+            Sign up for free</button></a>
+          </div>
+          {%endif%}
+      </div>
+    </div>
+  </nav>
